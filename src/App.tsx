@@ -14,8 +14,12 @@ import "./assets/css/slick-theme.css";
 import "./assets/css/style.css";
 import "./assets/css/responsive.css";
 import Home from "./pages/Home";
+import { useEffect } from "react";
 
 function App() {
+  // useEffect(() => {
+
+  // })
   return (
     <div >
      <Home />
