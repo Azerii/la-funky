@@ -65,7 +65,6 @@ function Header() {
                             </div>
                             <ul className="navbar-nav attr-nav align-items-center">
                                 <li><a href="#" className="nav-link"><i className="linearicons-user"></i></a></li>
-                                <li><a href="#" className="nav-link"><i className="linearicons-heart"></i><span className="wishlist_count">0</span></a></li>
                                 <li className="dropdown cart_dropdown"><a className="nav-link cart_trigger" href="#" data-bs-toggle="dropdown"><i className="linearicons-cart"></i><span className="cart_count">2</span></a>
                                     <div className="cart_box dropdown-menu dropdown-menu-right">
                                         <ul className="cart_list">
