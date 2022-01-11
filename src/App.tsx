@@ -13,17 +13,17 @@ import "./assets/css/slick.css";
 import "./assets/css/slick-theme.css";
 import "./assets/css/style.css";
 import "./assets/css/responsive.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import { useEffect } from "react";
 
 function App() {
-  // useEffect(() => {
 
-  // })
   return (
-    <div >
-     <Home />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 

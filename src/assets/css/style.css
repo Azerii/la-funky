@@ -6518,10 +6518,12 @@ footer .widget_recent_post .post_img img {
 .tab_slider > .tab-pane {
 	display: block;
 	height: 0;
+	overflow: hidden;
 }
 .tab_slider .tab-pane.active {
 	height: auto;
 	display: block;
+	overflow: unset;
 	-webkit-animation-name: moveUp;
 	animation-name: moveUp;
 	-webkit-animation-duration: .5s;
