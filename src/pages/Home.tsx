@@ -1,6 +1,6 @@
 import FeaturedSales from '../components/home/banners/FeaturedSales'
 import ExclusiveProducts from '../components/home/products/ExclusiveProducts'
-import Footer from '../components/home/footer/Footer'
+import Footer from '../components/global/Footer'
 import BannerSlider from '../components/home/header/BannerSlider'
 import Header from '../components/home/header/header'
 import FeaturedProducts from '../components/home/products/FeaturedProducts'
