@@ -35,13 +35,6 @@ function ProductItem(): JSX.Element {
           <div className="pr_desc">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
           </div>
-          <div className="pr_switch_wrap">
-              <div className="product_color_switch">
-                  <span className="active" data-color="#87554B"></span>
-                  <span data-color="#333333"></span>
-                  <span data-color="#DA323F"></span>
-              </div>
-          </div>
         </div>
       </div>
     </div>
