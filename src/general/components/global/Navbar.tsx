@@ -210,10 +210,10 @@ function Navbar() {
                       159.00
                     </p>
                     <p className="cart_buttons">
-                      <a href="#" className="btn btn-fill-line view-cart">
+                      <a href="/cart" className="btn btn-fill-line view-cart">
                         View Cart
                       </a>
-                      <a href="#" className="btn btn-fill-out checkout">
+                      <a href="/checkout" className="btn btn-fill-out checkout">
                         Checkout
                       </a>
                     </p>

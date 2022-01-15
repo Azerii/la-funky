@@ -18,6 +18,7 @@ import Home from './general/pages/Home';
 import PageNotFound from './general/components/global/PageNotFound';
 import Shop from './general/pages/Shop';
 import Product from './general/pages/Product';
+import Cart from './general/pages/Cart';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product-details" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
 
         {/* No match */}
         <Route path="*" element={<PageNotFound />} />
