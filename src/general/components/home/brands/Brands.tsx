@@ -1,9 +1,9 @@
-import cl_logo1 from "../../../assets/images/cl_logo1.png";
-import cl_logo2 from "../../../assets/images/cl_logo2.png";
-import cl_logo3 from "../../../assets/images/cl_logo3.png";
-import cl_logo4 from "../../../assets/images/cl_logo4.png";
-import cl_logo5 from "../../../assets/images/cl_logo5.png";
-import cl_logo6 from "../../../assets/images/cl_logo6.png";
+import cl_logo1 from "../../../../assets/images/cl_logo1.png";
+import cl_logo2 from "../../../../assets/images/cl_logo2.png";
+import cl_logo3 from "../../../../assets/images/cl_logo3.png";
+import cl_logo4 from "../../../../assets/images/cl_logo4.png";
+import cl_logo5 from "../../../../assets/images/cl_logo5.png";
+import cl_logo6 from "../../../../assets/images/cl_logo6.png";
 import BrandItem from "./BrandItem";
 
 function Brands(): JSX.Element {

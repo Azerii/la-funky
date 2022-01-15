@@ -1,4 +1,4 @@
-import shop_banner_img4 from "../../../assets/images/shop_banner_img4.jpg";
+import shop_banner_img4 from "../../../../assets/images/shop_banner_img4.jpg";
 
 function SaleBanner(): JSX.Element {
   return (

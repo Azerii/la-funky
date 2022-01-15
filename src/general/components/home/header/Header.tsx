@@ -1,7 +1,7 @@
-import logo_light from "../../../assets/images/logo_light.png";
-import logo_dark from "../../../assets/images/logo_dark.png";
-import cart_thamb1 from "../../../assets/images/cart_thamb1.jpg";
-import cart_thamb2 from "../../../assets/images/cart_thamb2.jpg";
+import logo_light from "../../../../assets/images/logo_light.png";
+import logo_dark from "../../../../assets/images/logo_dark.png";
+import cart_thamb1 from "../../../../assets/images/cart_thamb1.jpg";
+import cart_thamb2 from "../../../../assets/images/cart_thamb2.jpg";
 import CategoryMenu from "./CategoryMenu";
 
 function Header() {
@@ -24,7 +24,7 @@ function Header() {
                                 <div className="input-group-prepend">
                                     <div className="custom_select">
                                         <select className="first_null">
-                                            <option value="">All Category</option>
+                                            <option value="">All</option>
                                             <option value="Dresses">Dresses</option>
                                             <option value="Shirt-Tops">Shirt &amp; Tops</option>
                                             <option value="T-Shirt">T-Shirt</option>
@@ -60,6 +60,7 @@ function Header() {
                             <div className="collapse navbar-collapse mobile_side_menu" id="navbarSidetoggle">
                                 <ul className="navbar-nav">
                                     <li><a className="nav-link nav_item" href="/shop">Shop</a></li> 
+                                    <li><a className="nav-link nav_item" href="/about">About Us</a></li> 
                                     <li><a className="nav-link nav_item" href="/contact">Contact Us</a></li> 
                                 </ul>
                             </div>

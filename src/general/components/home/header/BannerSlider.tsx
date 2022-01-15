@@ -1,6 +1,6 @@
-import banner4 from "../../../assets/images/banner4.jpg";
-import banner5 from "../../../assets/images/banner5.jpg";
-import banner6 from "../../../assets/images/banner6.jpg";
+import banner4 from "../../../../assets/images/banner4.jpg";
+import banner5 from "../../../../assets/images/banner5.jpg";
+import banner6 from "../../../../assets/images/banner6.jpg";
 import CarouselItem from "./CarouselItem";
 
 function BannerSlider() {

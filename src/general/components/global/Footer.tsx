@@ -1,9 +1,9 @@
-import logo_light from "../../assets/images/logo_light.png"
-import visa from "../../assets/images/visa.png"
-import discover from "../../assets/images/discover.png"
-import master_card from "../../assets/images/master_card.png"
-import paypal from "../../assets/images/paypal.png"
-import american_express from "../../assets/images/amarican_express.png"
+import logo_light from "../../../assets/images/logo_light.png"
+import visa from "../../../assets/images/visa.png"
+import discover from "../../../assets/images/discover.png"
+import master_card from "../../../assets/images/master_card.png"
+import paypal from "../../../assets/images/paypal.png"
+import american_express from "../../../assets/images/amarican_express.png"
 
 function Footer(): JSX.Element {
   return (

@@ -1,5 +1,5 @@
-import menu_banner1 from "../../../assets/images/menu_banner1.jpg";
-import menu_banner2 from "../../../assets/images/menu_banner2.jpg";
+import menu_banner1 from "../../../../assets/images/menu_banner1.jpg";
+import menu_banner2 from "../../../../assets/images/menu_banner2.jpg";
 
 function DropdownMegaMenu() {
   return (

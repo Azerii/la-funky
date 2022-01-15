@@ -1,24 +1,19 @@
-import DropdownMegaMenu from "./DropdownMegaMenu";
 
 function CategoryMenu() {
   return (
     <div id="navCatContent" className="nav_cat navbar collapse">
       <ul> 
-          <li className="dropdown dropdown-mega-menu">
-              <a className="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i className="flaticon-woman"></i> <span>Woman's</span></a>
-              <DropdownMegaMenu />
+          <li>
+              <a className="dropdown-item nav-link nav_item" href="#"><i className="flaticon-woman"></i> <span>Women</span></a>
           </li>
-          <li className="dropdown dropdown-mega-menu">
-              <a className="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i className="flaticon-boss"></i> <span>Men's</span></a>
-              <DropdownMegaMenu />
+          <li>
+              <a className="dropdown-item nav-link nav_item" href="#"><i className="flaticon-boss"></i> <span>Men</span></a>
           </li>
-          <li className="dropdown dropdown-mega-menu">
-              <a className="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i className="flaticon-friendship"></i> <span>Kid's</span></a>
-              <DropdownMegaMenu />
+          <li>
+              <a className="dropdown-item nav-link nav_item" href="#"><i className="flaticon-friendship"></i> <span>Kids</span></a>
           </li>
-          <li className="dropdown dropdown-mega-menu">
-              <a className="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i className="flaticon-sunglasses"></i> <span>Accessories</span></a>
-              <DropdownMegaMenu />
+          <li>
+              <a className="dropdown-item nav-link nav_item" href="#"><i className="flaticon-sunglasses"></i> <span>Accessories</span></a>
           </li>
           <li><a className="dropdown-item nav-link nav_item" href="coming-soon.html"><i className="flaticon-jacket"></i> <span>Clothing</span></a></li>
           <li><a className="dropdown-item nav-link nav_item" href="404.html"><i className="flaticon-sneakers"></i> <span>Shoes</span></a></li>

@@ -2,7 +2,7 @@ import FeaturedSales from '../components/home/banners/FeaturedSales'
 import ExclusiveProducts from '../components/home/products/ExclusiveProducts'
 import Footer from '../components/global/Footer'
 import BannerSlider from '../components/home/header/BannerSlider'
-import Header from '../components/home/header/header'
+import Header from '../components/home/header/Header'
 import FeaturedProducts from '../components/home/products/FeaturedProducts'
 import Brands from '../components/home/brands/Brands'
 

@@ -1,4 +1,4 @@
-import shop_banner_img1 from "../../../assets/images/shop_banner_img1.jpg";
+import shop_banner_img1 from "../../../../assets/images/shop_banner_img1.jpg";
 
 function SingleBannerInfo(): JSX.Element {
   return (
