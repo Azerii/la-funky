@@ -25,6 +25,7 @@ import MyAccount from './customer/pages/MyAccount';
 import { useEffect } from 'react';
 import Login from './customer/pages/Login';
 import Register from './customer/pages/Register';
+import OrderCompleted from './general/pages/OrderCompleted';
 
 const scriptUrls = [
   'assets/js/jquery-3.6.0.min.js',
@@ -63,6 +64,7 @@ function App() {
         <Route path="/product-details" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-completed" element={<OrderCompleted />} />
         <Route path="/account/*" element={<MyAccount />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
