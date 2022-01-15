@@ -1,20 +1,15 @@
 import CartTable from '../components/cart/CartTable';
-import Breadcrumb from '../components/global/Breadcrumb';
-import Footer from '../components/global/Footer';
-import Navbar from '../components/global/Navbar';
+import Layout from '../components/global/Layout';
 
 function Cart(): JSX.Element {
   return (
-    <>
-      <Navbar />
-      <Breadcrumb />
+    <Layout>
       <div className="section">
         <div className="container">
           <CartTable />
         </div>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 }
 

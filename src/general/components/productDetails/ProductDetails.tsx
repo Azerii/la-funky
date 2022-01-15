@@ -132,16 +132,16 @@ function ProductDetails(): JSX.Element {
           <div className="cart_extra">
             <div className="cart-product-quantity">
               <div className="quantity">
-                <input type="button" value="-" className="minus" />
+                <input type="button" value="-" className="minus" readOnly />
                 <input
                   type="text"
                   name="quantity"
-                  value="1"
+                  defaultValue="1"
                   title="Qty"
                   className="qty"
                   size={4}
                 />
-                <input type="button" value="+" className="plus" />
+                <input type="button" value="+" className="plus" readOnly />
               </div>
             </div>
             <div className="cart_btn">

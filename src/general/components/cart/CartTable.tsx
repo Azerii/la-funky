@@ -29,7 +29,6 @@ function CartTable(): JSX.Element {
                       <div className="coupon field_form input-group">
                         <input
                           type="text"
-                          value=""
                           className="form-control form-control-sm"
                           placeholder="Enter Coupon Code.."
                         />

@@ -3,6 +3,7 @@ import logo_dark from '../../../../assets/images/logo_dark.png';
 import cart_thamb1 from '../../../../assets/images/cart_thamb1.jpg';
 import cart_thamb2 from '../../../../assets/images/cart_thamb2.jpg';
 import CategoryMenu from './CategoryMenu';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -10,7 +11,7 @@ function Header() {
       <div className="middle-header dark_skin">
         <div className="container">
           <div className="nav_block">
-            <a className="navbar-brand" href="index.html">
+            <a className="navbar-brand" href="/">
               <img className="logo_light" src={logo_light} alt="logo" />
               <img className="logo_dark" src={logo_dark} alt="logo" />
             </a>
@@ -101,7 +102,7 @@ function Header() {
                 </div>
                 <ul className="navbar-nav attr-nav align-items-center">
                   <li>
-                    <a href="#" className="nav-link">
+                    <a href="/account" className="nav-link">
                       <i className="linearicons-user"></i>
                     </a>
                   </li>

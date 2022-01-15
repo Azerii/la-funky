@@ -1,5 +1,6 @@
 import logo_light from '../../../assets/images/logo_light.png';
 import logo_dark from '../../../assets/images/logo_dark.png';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -7,46 +8,8 @@ function Navbar() {
       <div className="top-header">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-md-6">
-              <div className="d-flex align-items-center justify-content-center justify-content-md-start">
-                <div className="lng_dropdown me-2">
-                  <select name="countries" className="custome_select">
-                    <option
-                      value="en"
-                      data-image="assets/images/eng.png"
-                      data-title="English"
-                    >
-                      English
-                    </option>
-                    <option
-                      value="fn"
-                      data-image="assets/images/fn.png"
-                      data-title="France"
-                    >
-                      France
-                    </option>
-                    <option
-                      value="us"
-                      data-image="assets/images/us.png"
-                      data-title="United States"
-                    >
-                      United States
-                    </option>
-                  </select>
-                </div>
-                <div className="me-3">
-                  <select name="countries" className="custome_select">
-                    <option value="USD" data-title="USD">
-                      USD
-                    </option>
-                    <option value="EUR" data-title="EUR">
-                      EUR
-                    </option>
-                    <option value="GBR" data-title="GBR">
-                      GBR
-                    </option>
-                  </select>
-                </div>
+            <div className="col-6">
+              <div className="d-flex align-items-center justify-content-md-start">
                 <ul className="contact_detail text-center text-lg-start">
                   <li>
                     <i className="ti-mobile"></i>
@@ -55,11 +18,11 @@ function Navbar() {
                 </ul>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="text-center text-md-end">
+            <div className="col-6">
+              <div className="text-end">
                 <ul className="header_list">
                   <li>
-                    <a href="login.html">
+                    <a href="/login">
                       <i className="ti-user"></i>
                       <span>Login</span>
                     </a>
@@ -73,7 +36,7 @@ function Navbar() {
       <div className="bottom_header dark_skin main_menu_uppercase">
         <div className="container">
           <nav className="navbar navbar-expand-lg">
-            <a className="navbar-brand" href="index.html">
+            <a className="navbar-brand" href="/">
               <img className="logo_light" src={logo_light} alt="logo" />
               <img className="logo_dark" src={logo_dark} alt="logo" />
             </a>

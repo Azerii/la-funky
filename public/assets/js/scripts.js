@@ -180,7 +180,6 @@ setTimeout(() => {
 	});
 	
 	$(".pr_search_trigger").on('click', function() {
-		console.log("this works")
 		$(this).toggleClass('show');
 		$('.product_search_form').toggleClass('show');
 	});

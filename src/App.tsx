@@ -23,6 +23,8 @@ import Cart from './general/pages/Cart';
 import Checkout from './general/pages/Checkout';
 import MyAccount from './customer/pages/MyAccount';
 import { useEffect } from 'react';
+import Login from './customer/pages/Login';
+import Register from './customer/pages/Register';
 
 const scriptUrls = [
   'assets/js/jquery-3.6.0.min.js',
@@ -37,8 +39,8 @@ const scriptUrls = [
   'assets/js/isotope.min.js',
   'assets/js/jquery.dd.min.js',
   'assets/js/slick.min.js',
-  'assets/js/jquery.elevatezoom.js',
-  'assets/js/scripts.js'
+  'assets/js/jquery.elevatezoom.js'
+  // 'assets/js/scripts.js'
 ];
 
 function App() {
@@ -61,13 +63,9 @@ function App() {
         <Route path="/product-details" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/account/*" element={<MyAccount />}>
-          {/* <Route path="dashboard" element={<Dashboard />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="delivery-address" element={<DeliveryAddress />} />
-          <Route path="details" element={<AccountDetails />} />
-          <Route path="change-password" element={<ChangePassword />} /> */}
-        </Route>
+        <Route path="/account/*" element={<MyAccount />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
         {/* No match */}
         <Route path="*" element={<PageNotFound />} />

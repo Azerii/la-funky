@@ -16,16 +16,16 @@ function CartItem(): JSX.Element {
       </td>
       <td className="product-quantity" data-title="Quantity">
         <div className="quantity">
-          <input type="button" value="-" className="minus" />
+          <input type="button" value="-" className="minus" readOnly />
           <input
             type="text"
             name="quantity"
-            value="1"
+            defaultValue="1"
             title="Qty"
             className="qty"
             size={4}
           />
-          <input type="button" value="+" className="plus" />
+          <input type="button" value="+" className="plus" readOnly />
         </div>
       </td>
       <td className="product-subtotal" data-title="Total">
