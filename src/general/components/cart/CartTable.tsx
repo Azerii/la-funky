@@ -26,7 +26,7 @@ function CartTable(): JSX.Element {
                 <td colSpan={6} className="px-0">
                   <div className="row g-0 align-items-center">
                     <div className="col-lg-4 col-md-6 mb-3 mb-md-0">
-                      {/* <div className="coupon field_form input-group">
+                      <div className="coupon field_form input-group">
                         <input
                           type="text"
                           value=""
@@ -41,7 +41,7 @@ function CartTable(): JSX.Element {
                             Apply Coupon
                           </button>
                         </div>
-                      </div> */}
+                      </div>
                     </div>
                     <div className="col-lg-8 col-md-6 text-start text-md-end">
                       <button

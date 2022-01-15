@@ -1,4 +1,5 @@
-import React from 'react';
+import logo_light from '../../../assets/images/logo_light.png';
+import logo_dark from '../../../assets/images/logo_dark.png';
 
 function Navbar() {
   return (
@@ -73,16 +74,8 @@ function Navbar() {
         <div className="container">
           <nav className="navbar navbar-expand-lg">
             <a className="navbar-brand" href="index.html">
-              <img
-                className="logo_light"
-                src="assets/images/logo_light.png"
-                alt="logo"
-              />
-              <img
-                className="logo_dark"
-                src="assets/images/logo_dark.png"
-                alt="logo"
-              />
+              <img className="logo_light" src={logo_light} alt="logo" />
+              <img className="logo_dark" src={logo_dark} alt="logo" />
             </a>
             <button
               className="navbar-toggler"
@@ -122,10 +115,7 @@ function Navbar() {
             </div>
             <ul className="navbar-nav attr-nav align-items-center">
               <li>
-                <a
-                  href="javascript:void(0);"
-                  className="nav-link search_trigger"
-                >
+                <a href="#" className="nav-link search_trigger">
                   <i className="linearicons-magnifier"></i>
                 </a>
                 <div className="search_wrap">

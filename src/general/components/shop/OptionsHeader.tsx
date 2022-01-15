@@ -1,4 +1,3 @@
-
 function OptionsHeader(): JSX.Element {
   return (
     <div className="row align-items-center mb-4 pb-1">
@@ -17,22 +16,26 @@ function OptionsHeader(): JSX.Element {
           </div>
           <div className="product_header_right">
             <div className="products_view">
-              <a href="javascript:void(0);" className="shorting_icon grid active"><i className="ti-view-grid"></i></a>
-              <a href="javascript:void(0);" className="shorting_icon list"><i className="ti-layout-list-thumb"></i></a>
+              <a href="#" className="shorting_icon grid active">
+                <i className="ti-view-grid"></i>
+              </a>
+              <a href="#" className="shorting_icon list">
+                <i className="ti-layout-list-thumb"></i>
+              </a>
             </div>
             <div className="custom_select">
               <select className="form-control form-control-sm">
-                  <option value="">Showing</option>
-                  <option value="9">9</option>
-                  <option value="12">12</option>
-                  <option value="18">18</option>
+                <option value="">Showing</option>
+                <option value="9">9</option>
+                <option value="12">12</option>
+                <option value="18">18</option>
               </select>
             </div>
           </div>
         </div>
       </div>
-    </div> 
-  )
+    </div>
+  );
 }
 
-export default OptionsHeader
+export default OptionsHeader;
