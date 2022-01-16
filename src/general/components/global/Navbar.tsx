@@ -64,16 +64,6 @@ function Navbar() {
                     Shop
                   </a>
                 </li>
-                <li>
-                  <a className="nav-link nav_item" href="/about">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link nav_item" href="/contact">
-                    Contact Us
-                  </a>
-                </li>
               </ul>
             </div>
             <ul className="navbar-nav attr-nav align-items-center">
