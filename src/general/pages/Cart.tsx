@@ -1,4 +1,5 @@
 import CartTable from '../components/cart/CartTable';
+import SubTotals from '../components/cart/SubTotals';
 import Layout from '../components/global/Layout';
 
 function Cart(): JSX.Element {
@@ -7,6 +8,7 @@ function Cart(): JSX.Element {
       <div className="section">
         <div className="container">
           <CartTable />
+          <SubTotals />
         </div>
       </div>
     </Layout>
