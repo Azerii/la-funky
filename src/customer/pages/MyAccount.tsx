@@ -13,7 +13,7 @@ function MyAccount() {
   return (
     <>
       <Navbar />
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <div className="section">
         <div className="container">
           <div className="row">
