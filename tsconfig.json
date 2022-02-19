@@ -21,6 +21,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-, "public/assets/owlcarousel", "public/assets/js"  ]
+    "src", 
+    "public/assets/owlcarousel", 
+    "public/assets/js"  
+  ]
 }

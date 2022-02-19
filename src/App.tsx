@@ -44,14 +44,14 @@ const scriptUrls = [
   // 'assets/js/scripts.js'
 ];
 
-function App() {
-  const appendScript = (url: string): void => {
-    const scriptTag = document.createElement('script');
-    scriptTag.src = url;
-    scriptTag.type = 'text/javascript';
-    document.body.appendChild(scriptTag);
-  };
+const appendScript = (url: string): void => {
+  const scriptTag = document.createElement('script');
+  scriptTag.src = url;
+  scriptTag.type = 'text/javascript';
+  document.body.appendChild(scriptTag);
+};
 
+function App(): JSX.Element {
   useEffect(() => {
     scriptUrls.forEach((url) => appendScript(url));
   });

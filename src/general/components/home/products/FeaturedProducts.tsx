@@ -1,4 +1,5 @@
-import ProductSlider from './ProductSider'
+import ProductSlider from './ProductSider';
+import TabSlider from './TabSlider';
 
 function FeaturedProducts(): JSX.Element {
   return (
@@ -7,20 +8,20 @@ function FeaturedProducts(): JSX.Element {
         <div className="row">
           <div className="col-md-12">
             <div className="heading_tab_header">
-                <div className="heading_s2">
-                  <h2>Featured Products</h2>
-                </div>
+              <div className="heading_s2">
+                <h2>Best Selling</h2>
               </div>
+            </div>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
-            <ProductSlider />
+            <TabSlider />
           </div>
-        </div> 
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default FeaturedProducts
+export default FeaturedProducts;

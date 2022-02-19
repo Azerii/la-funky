@@ -1,10 +1,26 @@
-import logo_light from '../../../assets/images/logo_light.png';
-import logo_dark from '../../../assets/images/logo_dark.png';
-import { Link } from 'react-router-dom';
+import logo_light from '../../../assets/images/Funky_white.png';
+import logo_dark from '../../../assets/images/Funky.png';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  .navbar-brand {
+    img {
+      height: 48px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .navbar-brand {
+      img {
+        height: 24px;
+      }
+    }
+  }
+`;
 
 function Navbar() {
   return (
-    <header className="header_wrap fixed-top header_with_topbar">
+    <Wrapper className="header_wrap fixed-top header_with_topbar">
       <div className="top-header">
         <div className="container">
           <div className="row align-items-center">
@@ -167,7 +183,7 @@ function Navbar() {
           </nav>
         </div>
       </div>
-    </header>
+    </Wrapper>
   );
 }
 

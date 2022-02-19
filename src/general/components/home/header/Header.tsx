@@ -1,13 +1,66 @@
-import logo_light from '../../../../assets/images/logo_light.png';
-import logo_dark from '../../../../assets/images/logo_dark.png';
+import logo_light from '../../../../assets/images/Funky_white.png';
+import logo_dark from '../../../../assets/images/Funky.png';
 import cart_thamb1 from '../../../../assets/images/cart_thamb1.jpg';
 import cart_thamb2 from '../../../../assets/images/cart_thamb2.jpg';
 import CategoryMenu from './CategoryMenu';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { base_url } from '../../../../utils/utils';
+import { useNavigate } from 'react-router-dom';
+
+const Wrapper = styled.div`
+  .navbar-brand {
+    img {
+      height: 48px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .navbar-brand {
+      img {
+        height: 24px;
+      }
+    }
+  }
+`;
 
 function Header() {
+  const navigate = useNavigate();
+  const [categories, setCategories] = useState<any>([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchWord, setSearchWord] = useState('');
+
+  const getData = async (): Promise<void> => {
+    try {
+      const res = await axios.get(`${base_url}/shop/categories`);
+
+      if (res.data.status === 'success') {
+        setCategories(res.data.data.categories);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+
+    navigate(
+      `shop?search=${searchWord}${
+        selectedCategory ? `&category=${selectedCategory}` : ''
+      }`
+    );
+  };
+
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <header className="header_wrap">
+    <Wrapper className="header_wrap">
       <div className="middle-header dark_skin">
         <div className="container">
           <div className="nav_block">
@@ -20,24 +73,35 @@ function Header() {
               <span>123-456-7689</span>
             </div>
             <div className="product_search_form">
-              <form>
+              <form onSubmit={handleSearch}>
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <div className="custom_select">
-                      <select className="first_null">
+                      <select
+                        name="category"
+                        className="first_null"
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                      >
                         <option value="">All</option>
                         <option value="Dresses">Dresses</option>
                         <option value="Shirt-Tops">Shirt &amp; Tops</option>
                         <option value="T-Shirt">T-Shirt</option>
                         <option value="Pents">Pents</option>
                         <option value="Jeans">Jeans</option>
+                        {categories?.map((item: any, index: number) => (
+                          <option key={index} value={item.name}>
+                            {item.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
                   <input
                     className="form-control"
+                    name="search"
                     placeholder="Search Product..."
                     type="text"
+                    onChange={(e) => setSearchWord(e.target.value)}
                     required
                   />
                   <button type="submit" className="search_btn">
@@ -181,7 +245,7 @@ function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </Wrapper>
   );
 }
 
