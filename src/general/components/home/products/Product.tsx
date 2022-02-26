@@ -20,12 +20,12 @@ function Product(): JSX.Element {
               <span>35% Off</span>
             </div>
           </div>
-          <div className="rating_wrap">
+          {/* <div className="rating_wrap">
             <div className="rating">
               <div className="product_rate" style={{ width: '80%' }}></div>
             </div>
             <span className="rating_num">(21)</span>
-          </div>
+          </div> */}
           <div className="pr_desc">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus

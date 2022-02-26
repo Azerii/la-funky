@@ -9,7 +9,7 @@ function Product(): JSX.Element {
   return (
     <>
       <Navbar />
-      <Breadcrumb />
+      {/* <Breadcrumb /> */}
       <div className="section">
         <div className="container">
           <ProductDetails />

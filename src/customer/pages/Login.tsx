@@ -3,7 +3,7 @@ import Layout from '../../general/components/global/Layout';
 
 function Login(): JSX.Element {
   return (
-    <Layout noBreadcrumb>
+    <Layout>
       <div className="login_register_wrap section">
         <div className="container">
           <div className="row justify-content-center">

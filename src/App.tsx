@@ -26,6 +26,9 @@ import { useEffect } from 'react';
 import Login from './customer/pages/Login';
 import Register from './customer/pages/Register';
 import OrderCompleted from './general/pages/OrderCompleted';
+import { store, persistor } from './redux/store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const scriptUrls = [
   'assets/js/jquery-3.6.0.min.js',
@@ -57,22 +60,26 @@ function App(): JSX.Element {
   });
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/product-details" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/order-completed" element={<OrderCompleted />} />
-        <Route path="/account/*" element={<MyAccount />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/product-details" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/order-completed" element={<OrderCompleted />} />
+            <Route path="/account/*" element={<MyAccount />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-        {/* No match */}
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </Router>
+            {/* No match */}
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </Router>
+      </PersistGate>
+    </Provider>
   );
 }
 

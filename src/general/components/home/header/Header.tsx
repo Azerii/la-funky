@@ -83,11 +83,11 @@ function Header() {
                         onChange={(e) => setSelectedCategory(e.target.value)}
                       >
                         <option value="">All</option>
-                        <option value="Dresses">Dresses</option>
+                        {/* <option value="Dresses">Dresses</option>
                         <option value="Shirt-Tops">Shirt &amp; Tops</option>
                         <option value="T-Shirt">T-Shirt</option>
                         <option value="Pents">Pents</option>
-                        <option value="Jeans">Jeans</option>
+                        <option value="Jeans">Jeans</option> */}
                         {categories?.map((item: any, index: number) => (
                           <option key={index} value={item.name}>
                             {item.name}
@@ -125,10 +125,10 @@ function Header() {
                   aria-expanded="false"
                   className="categories_btn"
                 >
-                  <i className="linearicons-menu"></i>
-                  <span>All Categories </span>
+                  <i className="linearicons-bag"></i>
+                  <span>Shop Categories</span>
                 </button>
-                <CategoryMenu />
+                {/* <CategoryMenu /> */}
               </div>
             </div>
             <div className="col-lg-9 col-md-8 col-sm-6 col-9">
@@ -148,8 +148,19 @@ function Header() {
                 >
                   <ul className="navbar-nav">
                     <li>
-                      <a className="nav-link nav_item" href="/shop">
-                        Shop
+                      <a
+                        className="nav-link nav_item"
+                        href="/shop?category=shoes"
+                      >
+                        Shoes
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="nav-link nav_item"
+                        href="/shop?category=bags"
+                      >
+                        Bags
                       </a>
                     </li>
                   </ul>

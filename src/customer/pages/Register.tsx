@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../general/components/global/Layout';
 
 function Register(): JSX.Element {
   return (
-    <Layout noBreadcrumb>
+    <Layout>
       <div className="login_register_wrap section">
         <div className="container">
           <div className="row justify-content-center">

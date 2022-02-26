@@ -5,15 +5,12 @@ import Navbar from './Navbar';
 
 interface Props {
   children: ReactNode;
-  noBreadcrumb?: boolean;
 }
 
 function Layout(props: Props): JSX.Element {
-  const { noBreadcrumb } = props;
   return (
     <>
       <Navbar />
-      {!noBreadcrumb && <Breadcrumb />}
       <>{props.children}</>
       <Footer />
     </>

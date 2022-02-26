@@ -8,7 +8,7 @@ function BannerSlider() {
     <div className="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
       <div className="container">
         <div className="row">
-          <div className="col-lg-9 offset-lg-3">
+          <div className="col-lg-12">
             <div
               id="carouselExampleControls"
               className="carousel slide light_arrow"

@@ -1,4 +1,3 @@
-import ProductSlider from './ProductSider';
 import TabSlider from './TabSlider';
 
 function FeaturedProducts(): JSX.Element {
