@@ -1,15 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../../redux/store';
 
-interface Product {
+export interface CartItem {
+  id: number;
   image: string;
   name: string;
   quantityAvailable: number;
-}
-
-interface CartItem {
-  id: number;
-  product: Product;
   price: number;
   quantity: number;
   total: number;
@@ -17,13 +12,13 @@ interface CartItem {
 
 interface CartState {
   items: CartItem[];
-  total: number;
+  subTotal: number;
 }
 
 // Define the initial state using that type
 const initialState: CartState = {
   items: [],
-  total: 0
+  subTotal: 0
 };
 
 export const cartSlice = createSlice({
@@ -44,11 +39,20 @@ export const cartSlice = createSlice({
 
       if (index !== -1) {
         state.items[index].quantity += 1;
-
+        state.items[index].total =
+          state.items[index].price * state.items[index].quantity;
         return;
       }
 
       state.items.push(action.payload);
+
+      let tempSubtotal = 0;
+
+      state.items.forEach((item: CartItem) => {
+        tempSubtotal += item.total;
+      });
+
+      state.subTotal = tempSubtotal;
     },
     removeItem: (state: CartState, action: PayloadAction<number>): void => {
       const index: number = state.items.findIndex(
@@ -59,7 +63,15 @@ export const cartSlice = createSlice({
         return;
       }
 
-      state.items.splice(action.payload, 1);
+      state.items.splice(index, 1);
+
+      let tempSubtotal = 0;
+
+      state.items.forEach((item: CartItem) => {
+        tempSubtotal += item.total;
+      });
+
+      state.subTotal = tempSubtotal;
     },
     incrementQuantity: (
       state: CartState,
@@ -69,8 +81,22 @@ export const cartSlice = createSlice({
         (item) => item.id === action.payload
       );
 
-      if (temp && temp.quantity < temp.product.quantityAvailable) {
-        temp.quantity = temp?.quantity + 1;
+      if (temp && temp.quantity < temp.quantityAvailable) {
+        const index: number = state.items.findIndex(
+          (item) => item.id === action.payload
+        );
+
+        state.items[index].quantity += 1;
+        state.items[index].total =
+          state.items[index].price * state.items[index].quantity;
+
+        let tempSubtotal = 0;
+
+        state.items.forEach((item: CartItem) => {
+          tempSubtotal += item.total;
+        });
+
+        state.subTotal = tempSubtotal;
       }
     },
     decrementQuantity: (
@@ -82,7 +108,21 @@ export const cartSlice = createSlice({
       );
 
       if (temp && temp.quantity > 1) {
-        temp.quantity = temp?.quantity - 1;
+        const index: number = state.items.findIndex(
+          (item) => item.id === action.payload
+        );
+
+        state.items[index].quantity -= 1;
+        state.items[index].total =
+          state.items[index].price * state.items[index].quantity;
+
+        let tempSubtotal = 0;
+
+        state.items.forEach((item: CartItem) => {
+          tempSubtotal += item.total;
+        });
+
+        state.subTotal = tempSubtotal;
       }
     }
   }
@@ -90,8 +130,5 @@ export const cartSlice = createSlice({
 
 export const { addItem, removeItem, incrementQuantity, decrementQuantity } =
   cartSlice.actions;
-
-// Other code such as selectors can use the imported `RootState` type
-export const selectCart = (state: RootState) => state.cart.items;
 
 export default cartSlice.reducer;

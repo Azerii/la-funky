@@ -3,11 +3,12 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
+import authReducer from '../features/auth/authSlice';
 import cartReducer from '../features/cart/cartSlice';
 import persistStore from 'redux-persist/es/persistStore';
 
 const reducers = combineReducers({
-  // auth: authReducer,
+  auth: authReducer,
   cart: cartReducer
 });
 

@@ -22,14 +22,12 @@ function ProductItem(props: Props): JSX.Element {
   const handleAddToCart = (): void => {
     const cartItem = {
       id: product?.id,
-      product: {
-        image: product?.media[0],
-        name: product?.name,
-        quantityAvailable: product?.quantityAvailable
-      },
-      price: product?.regularPrice,
+      image: product?.media[0],
+      name: product?.name,
+      quantityAvailable: Number(product?.quantityAvailable),
+      price: Number(product?.regularPrice),
       quantity: 1,
-      total: product?.regularPrice
+      total: Number(product?.regularPrice)
     };
 
     dispatch(addItem(cartItem));

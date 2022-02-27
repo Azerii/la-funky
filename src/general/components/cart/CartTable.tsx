@@ -1,6 +1,11 @@
-import CartItem from './CartItem';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import CartEntry from './CartEntry';
 
 function CartTable(): JSX.Element {
+  const cartSubTotal = useAppSelector((state) => state.cart.subTotal);
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="row">
       <div className="col-12">
@@ -17,43 +22,10 @@ function CartTable(): JSX.Element {
               </tr>
             </thead>
             <tbody>
-              <CartItem />
-              <CartItem />
-              <CartItem />
+              {cartItems?.map((item, index) => (
+                <CartEntry key={index} data={item} />
+              ))}
             </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan={6} className="px-0">
-                  <div className="row g-0 align-items-center">
-                    <div className="col-lg-4 col-md-6 mb-3 mb-md-0">
-                      <div className="coupon field_form input-group">
-                        <input
-                          type="text"
-                          className="form-control form-control-sm"
-                          placeholder="Enter Coupon Code.."
-                        />
-                        <div className="input-group-append">
-                          <button
-                            className="btn btn-fill-out btn-sm"
-                            type="submit"
-                          >
-                            Apply Coupon
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-8 col-md-6 text-start text-md-end">
-                      <button
-                        className="btn btn-line-fill btn-sm"
-                        type="submit"
-                      >
-                        Update Cart
-                      </button>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>

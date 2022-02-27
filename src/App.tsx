@@ -29,6 +29,8 @@ import OrderCompleted from './general/pages/OrderCompleted';
 import { store, persistor } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import VerifyEmail from './customer/pages/VerifyEmail';
+import VerifyAccountSuccess from './customer/pages/VerifyAccountSuccess';
 
 const scriptUrls = [
   'assets/js/jquery-3.6.0.min.js',
@@ -73,6 +75,11 @@ function App(): JSX.Element {
             <Route path="/account/*" element={<MyAccount />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
+            <Route
+              path="/email-confirmation"
+              element={<VerifyAccountSuccess />}
+            />
 
             {/* No match */}
             <Route path="*" element={<PageNotFound />} />

@@ -13,9 +13,9 @@ function OrderCompleted(): JSX.Element {
                   <h3>Your order is completed!</h3>
                 </div>
                 <p>
-                  Thank you for your order! Your order is being processed and
-                  will be completed within 3-6 hours. You will receive an email
-                  confirmation when your order is completed.
+                  Thank you for your order! Your order is being processed. You
+                  will receive an email confirmation when your order is
+                  completed.
                 </p>
                 <a href="/shop" className="btn btn-fill-out">
                   Continue Shopping

@@ -1,14 +1,14 @@
 import logo_light from '../../../../assets/images/Funky_white.png';
 import logo_dark from '../../../../assets/images/Funky.png';
-import cart_thamb1 from '../../../../assets/images/cart_thamb1.jpg';
-import cart_thamb2 from '../../../../assets/images/cart_thamb2.jpg';
-import CategoryMenu from './CategoryMenu';
+// import CategoryMenu from './CategoryMenu';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { base_url } from '../../../../utils/utils';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../../../redux/hooks';
+import CartPreview from '../../global/CartPreview';
 
 const Wrapper = styled.div`
   .navbar-brand {
@@ -31,6 +31,8 @@ function Header() {
   const [categories, setCategories] = useState<any>([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchWord, setSearchWord] = useState('');
+
+  const cartItems = useAppSelector((state) => state.cart.items);
 
   const getData = async (): Promise<void> => {
     try {
@@ -83,11 +85,6 @@ function Header() {
                         onChange={(e) => setSelectedCategory(e.target.value)}
                       >
                         <option value="">All</option>
-                        {/* <option value="Dresses">Dresses</option>
-                        <option value="Shirt-Tops">Shirt &amp; Tops</option>
-                        <option value="T-Shirt">T-Shirt</option>
-                        <option value="Pents">Pents</option>
-                        <option value="Jeans">Jeans</option> */}
                         {categories?.map((item: any, index: number) => (
                           <option key={index} value={item.name}>
                             {item.name}
@@ -178,71 +175,12 @@ function Header() {
                       data-bs-toggle="dropdown"
                     >
                       <i className="linearicons-cart"></i>
-                      <span className="cart_count">2</span>
+                      {!!cartItems.length && (
+                        <span className="cart_count">{cartItems?.length}</span>
+                      )}
                     </a>
                     <div className="cart_box dropdown-menu dropdown-menu-right">
-                      <ul className="cart_list">
-                        <li>
-                          <a href="#" className="item_remove">
-                            <i className="ion-close"></i>
-                          </a>
-                          <a href="#">
-                            <img src={cart_thamb1} alt="cart_thumb1" />
-                            Variable product 001
-                          </a>
-                          <span className="cart_quantity">
-                            {' '}
-                            1 x{' '}
-                            <span className="cart_amount">
-                              {' '}
-                              <span className="price_symbole">$</span>
-                            </span>
-                            78.00
-                          </span>
-                        </li>
-                        <li>
-                          <a href="#" className="item_remove">
-                            <i className="ion-close"></i>
-                          </a>
-                          <a href="#">
-                            <img src={cart_thamb2} alt="cart_thumb2" />
-                            Ornare sed consequat
-                          </a>
-                          <span className="cart_quantity">
-                            {' '}
-                            1 x{' '}
-                            <span className="cart_amount">
-                              {' '}
-                              <span className="price_symbole">$</span>
-                            </span>
-                            81.00
-                          </span>
-                        </li>
-                      </ul>
-                      <div className="cart_footer">
-                        <p className="cart_total">
-                          <strong>Subtotal:</strong>{' '}
-                          <span className="cart_price">
-                            {' '}
-                            <span className="price_symbole">$</span>
-                          </span>
-                          159.00
-                        </p>
-                        <p className="cart_buttons">
-                          <a
-                            href="/cart"
-                            className="btn btn-fill-line view-cart"
-                          >
-                            View Cart
-                          </a>
-                          <a
-                            href="/checkout"
-                            className="btn btn-fill-out checkout"
-                          >
-                            Checkout
-                          </a>
-                        </p>
-                      </div>
+                      <CartPreview cartItems={cartItems} />
                     </div>
                   </li>
                 </ul>
