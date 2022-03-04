@@ -7,6 +7,8 @@ import FormGroup from '../../general/components/global/FormGroup';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../redux/hooks';
 import { setUser, User } from '../../features/auth/authSlice';
+import axios from 'axios';
+import { base_url } from '../../utils/utils';
 
 const Wrapper = styled.div`
   .form-check-label {
@@ -51,16 +53,17 @@ function Register(): JSX.Element {
   });
 
   const handleRegister = async (data: FormValues) => {
-    const temp: User = {
-      id: Math.floor(Math.random() * 100),
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      phoneNumber: data.phoneNumber
-    };
-    dispatch(setUser(temp));
+    const temp = { ...data, phoneNumber: data.phoneNumber.toString() };
+    try {
+      const res = await axios.post(`${base_url}/auth/register`, temp);
 
-    navigate('/verify-email');
+      if (res.data.status === 'success') {
+        dispatch(setUser(res.data.data));
+        navigate('/verify-email');
+      }
+    } catch (e: any) {
+      alert(e.response.data.message);
+    }
   };
 
   return (
@@ -74,6 +77,7 @@ function Register(): JSX.Element {
                   <div className="heading_s1">
                     <h3>Create an Account</h3>
                   </div>
+                  <div className="small_divider"></div>
                   <Formik
                     initialValues={{
                       firstName: '',
@@ -158,7 +162,6 @@ function Register(): JSX.Element {
                           <button
                             type="submit"
                             className="btn btn-fill-out btn-block"
-                            name="register"
                             disabled={
                               isSubmitting ||
                               !isValid ||

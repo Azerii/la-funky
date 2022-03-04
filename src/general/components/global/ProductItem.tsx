@@ -2,6 +2,9 @@ import product_img1 from '../../../assets/images/product_img1.jpg';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../../redux/hooks';
 import { addItem } from '../../../features/cart/cartSlice';
+import { Link } from 'react-router-dom';
+import { setCurrentProduct } from '../../../features/shop/shopSlice';
+import { formatNumber } from '../../../utils/utils';
 
 const Wrapper = styled.div``;
 
@@ -56,17 +59,25 @@ function ProductItem(props: Props): JSX.Element {
         </div>
         <div className="product_info">
           <h6 className="product_title">
-            <a href="/product-details">{product?.name}</a>
+            <a
+              href="/product-details"
+              onClick={() => product && dispatch(setCurrentProduct(product))}
+            >
+              {product?.name}
+            </a>
           </h6>
           <div className="product_price">
             <span className="price">
               <del>N</del>
-              {product?.regularPrice}
+              {formatNumber(product?.regularPrice)}
             </span>
             {product?.discount && (
               <del>
-                {Math.floor(
-                  (product?.regularPrice * product?.discount?.rate) / 100
+                N
+                {formatNumber(
+                  Math.floor(
+                    (product?.regularPrice * product?.discount?.rate) / 100
+                  )
                 )}
               </del>
             )}

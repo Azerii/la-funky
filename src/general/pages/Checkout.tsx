@@ -13,7 +13,6 @@ function Checkout(): JSX.Element {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="medium_divider"></div>
               <div className="divider center_icon">
                 <i className="linearicons-credit-card"></i>
               </div>

@@ -24,12 +24,12 @@ const VerifyAccountSuccess = () => {
   const [confirmed, setConfirmed] = useState(false);
 
   const checkConfirmation = async () => {
-    const confirmation = new URLSearchParams(search).get('confirmation');
+    const confirmation = new URLSearchParams(search).get('hash');
 
     try {
-      await axios.get(
-        `${base_url}/auth/email-confirmation?confirmation=${confirmation}`
-      );
+      await axios.post(`${base_url}/auth/email/verify`, {
+        token: confirmation
+      });
 
       setConfirmed(true);
       setLoading(false);

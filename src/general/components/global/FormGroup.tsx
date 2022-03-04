@@ -32,6 +32,16 @@ export const FormGroupWrapper = styled.div<any>`
     font-weight: 400;
   }
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
   .toggleShow {
     display: none;
   }

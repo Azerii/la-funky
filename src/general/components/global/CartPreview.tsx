@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import cart_thamb1 from '../../../assets/images/cart_thamb1.jpg';
 import { CartItem, removeItem } from '../../../features/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { formatNumber } from '../../../utils/utils';
 
 interface Props {
   cartItems: CartItem[];
@@ -37,7 +38,7 @@ function CartPreview(props: Props) {
                   <del>N</del>
                 </span>
               </span>
-              {item.total.toFixed(2)}
+              {formatNumber(item.price.toFixed(2))}
             </span>
           </li>
         ))}
@@ -51,7 +52,7 @@ function CartPreview(props: Props) {
               <del>N</del>
             </span>
           </span>
-          {cartSubTotal}
+          {formatNumber(cartSubTotal)}
         </p>
         <p className="cart_buttons">
           <a href="/cart" className="btn btn-fill-line view-cart">

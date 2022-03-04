@@ -4,10 +4,12 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import authReducer from '../features/auth/authSlice';
+import shopReducer from '../features/shop/shopSlice';
 import cartReducer from '../features/cart/cartSlice';
 import persistStore from 'redux-persist/es/persistStore';
 
 const reducers = combineReducers({
+  shop: shopReducer,
   auth: authReducer,
   cart: cartReducer
 });

@@ -8,6 +8,10 @@ export interface CartItem {
   price: number;
   quantity: number;
   total: number;
+  variants?: {
+    size?: string;
+    color?: string;
+  };
 }
 
 interface CartState {
@@ -37,16 +41,22 @@ export const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
 
+      let tempSubtotal = 0;
+
       if (index !== -1) {
-        state.items[index].quantity += 1;
+        state.items[index].quantity += action.payload.quantity;
         state.items[index].total =
           state.items[index].price * state.items[index].quantity;
+
+        state.items.forEach((item: CartItem) => {
+          tempSubtotal += item.total;
+        });
+
+        state.subTotal = tempSubtotal;
         return;
       }
 
       state.items.push(action.payload);
-
-      let tempSubtotal = 0;
 
       state.items.forEach((item: CartItem) => {
         tempSubtotal += item.total;

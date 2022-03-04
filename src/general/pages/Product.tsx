@@ -13,12 +13,12 @@ function Product(): JSX.Element {
       <div className="section">
         <div className="container">
           <ProductDetails />
-          <div className="row">
+          {/* <div className="row">
             <div className="col-12">
               <div className="large_divider clearfix"></div>
             </div>
-          </div>
-          <TabInfo />
+          </div> */}
+          {/* <TabInfo /> */}
           <div className="row">
             <div className="col-12">
               <div className="small_divider"></div>

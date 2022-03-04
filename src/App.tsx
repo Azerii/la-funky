@@ -14,7 +14,12 @@ import './assets/css/slick.css';
 import './assets/css/slick-theme.css';
 import './assets/css/style.css';
 import './assets/css/responsive.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from 'react-router-dom';
 import Home from './general/pages/Home';
 import PageNotFound from './general/components/global/PageNotFound';
 import Shop from './general/pages/Shop';
@@ -57,9 +62,16 @@ const appendScript = (url: string): void => {
 };
 
 function App(): JSX.Element {
+  const pathname = window.location.pathname;
+
   useEffect(() => {
     scriptUrls.forEach((url) => appendScript(url));
   });
+
+  useEffect(() => {
+    document.querySelector('html')?.scrollTo(0, 0);
+    // eslint-disable-next-line
+  }, [pathname]);
 
   return (
     <Provider store={store}>
