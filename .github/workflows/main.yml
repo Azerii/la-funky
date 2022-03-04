@@ -1,0 +1,60 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: React VPS Pipeline
+
+on:
+  push:
+    branches: [main]
+  #pull_request:
+    #branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    #defaults:
+      #run:
+        #working-directory: ./app
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+        #node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Displaying All assetts 
+        working-directory: ${{ github.workspace }}
+        run: |
+            echo ${{ github.workspace }}
+            ls -la
+      - name : Resolving Package Dependency
+        run: npm install
+      - run: npm run build --if-present        
+        env:
+          CI: false
+      - name: SSH and Copy App to Remote Server 
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local : /home/runner/work/JCI-Global-Web/JCI-Global-Web/build
+          remote : /home/lafunky/admin.funkycollections.ng
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+      - name: Run Command on SSH 
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: sudo systemctl restart nginx
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: whoami
