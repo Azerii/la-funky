@@ -12,17 +12,23 @@ export interface Brand {
   [x: string]: any;
 }
 
+export interface Tag {
+  [x: string]: any;
+}
+
 interface ShopState {
   currentProduct: Product;
   categories: Category[];
   brands: Brand[];
+  tags: Tag[];
 }
 
 // Define the initial state using that type
 const initialState: ShopState = {
   currentProduct: {},
   categories: [],
-  brands: []
+  brands: [],
+  tags: []
 };
 
 export const shopSlice = createSlice({
@@ -36,7 +42,7 @@ export const shopSlice = createSlice({
     ): void => {
       state.currentProduct = action.payload;
     },
-    setCateories: (
+    setCategories: (
       state: ShopState,
       action: PayloadAction<Category[]>
     ): void => {
@@ -44,10 +50,14 @@ export const shopSlice = createSlice({
     },
     setBrands: (state: ShopState, action: PayloadAction<Brand[]>): void => {
       state.brands = action.payload;
+    },
+    setTags: (state: ShopState, action: PayloadAction<Tag[]>): void => {
+      state.tags = action.payload;
     }
   }
 });
 
-export const { setCurrentProduct, setCateories, setBrands } = shopSlice.actions;
+export const { setCurrentProduct, setCategories, setBrands, setTags } =
+  shopSlice.actions;
 
 export default shopSlice.reducer;

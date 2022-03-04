@@ -7,8 +7,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { base_url } from '../../../../utils/utils';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
 import CartPreview from '../../global/CartPreview';
+import { setCategories } from '../../../../features/shop/shopSlice';
 
 const Wrapper = styled.div`
   .navbar-brand {
@@ -28,18 +29,21 @@ const Wrapper = styled.div`
 
 function Header() {
   const navigate = useNavigate();
-  const [categories, setCategories] = useState<any>([]);
+  const [categories, setData] = useState<any>([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchWord, setSearchWord] = useState('');
 
   const cartItems = useAppSelector((state) => state.cart.items);
+  const token = useAppSelector((state) => state.auth.token);
+  const dispatch = useAppDispatch();
 
   const getData = async (): Promise<void> => {
     try {
       const res = await axios.get(`${base_url}/shop/categories`);
 
       if (res.data.status === 'success') {
-        setCategories(res.data.data.categories);
+        setData(res.data.data.categories);
+        dispatch(setCategories(res.data.data.categories));
       }
     } catch (e) {
       console.log(e);
@@ -164,7 +168,10 @@ function Header() {
                 </div>
                 <ul className="navbar-nav attr-nav align-items-center">
                   <li>
-                    <a href="/account" className="nav-link">
+                    <a
+                      href={token ? '/account' : '/login'}
+                      className="nav-link"
+                    >
                       <i className="linearicons-user"></i>
                     </a>
                   </li>

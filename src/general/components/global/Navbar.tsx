@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 
 function Navbar() {
   const cartItems = useAppSelector((state) => state.cart.items);
+  const token = useAppSelector((state) => state.auth.token);
 
   return (
     <Wrapper className="header_wrap fixed-top header_with_topbar">
@@ -42,10 +43,17 @@ function Navbar() {
               <div className="text-end">
                 <ul className="header_list">
                   <li>
-                    <a href="/login">
-                      <i className="ti-user"></i>
-                      <span>Login</span>
-                    </a>
+                    {token ? (
+                      <a href="/account">
+                        <i className="ti-user"></i>
+                        <span>My account</span>
+                      </a>
+                    ) : (
+                      <a href="/login">
+                        <i className="ti-user"></i>
+                        <span>Login</span>
+                      </a>
+                    )}
                   </li>
                 </ul>
               </div>
