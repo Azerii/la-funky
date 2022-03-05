@@ -21,6 +21,7 @@ interface ShopState {
   categories: Category[];
   brands: Brand[];
   tags: Tag[];
+  loading: Boolean;
 }
 
 // Define the initial state using that type
@@ -28,7 +29,8 @@ const initialState: ShopState = {
   currentProduct: {},
   categories: [],
   brands: [],
-  tags: []
+  tags: [],
+  loading: false
 };
 
 export const shopSlice = createSlice({
@@ -53,6 +55,9 @@ export const shopSlice = createSlice({
     },
     setTags: (state: ShopState, action: PayloadAction<Tag[]>): void => {
       state.tags = action.payload;
+    },
+    setLoading: (state: ShopState, action: PayloadAction<Boolean>): void => {
+      state.loading = action.payload;
     }
   }
 });

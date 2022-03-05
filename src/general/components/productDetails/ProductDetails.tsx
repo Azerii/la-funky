@@ -1,19 +1,27 @@
 import product_img1 from '../../../assets/images/product_img1.jpg';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import styled from 'styled-components';
-import { Product } from '../../../features/shop/shopSlice';
-import { formatNumber } from '../../../utils/utils';
+import { Product, setCurrentProduct } from '../../../features/shop/shopSlice';
+import { base_url, formatNumber } from '../../../utils/utils';
 import { useState } from 'react';
 import { addItem, CartItem } from '../../../features/cart/cartSlice';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect } from 'react';
+import Loader from '../global/Loader';
 
 const ImgGallery = styled.div`
   display: flex;
 `;
 
 function ProductDetails(): JSX.Element {
+  const { search } = useLocation();
+  const productId = new URLSearchParams(search).get('id');
+
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
+  const [loading, setLoading] = useState(false);
   const product: Product = useAppSelector((state) => state.shop.currentProduct);
   const dispatch = useAppDispatch();
 
@@ -53,6 +61,39 @@ function ProductDetails(): JSX.Element {
 
     dispatch(addItem(cartItem));
   };
+
+  const getProduct = async (): Promise<void> => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${base_url}/shop/products/${productId}`);
+
+      if (res?.data.status === 'success') {
+        dispatch(setCurrentProduct(res.data.data));
+      }
+
+      setLoading(false);
+    } catch (e: any) {
+      setLoading(false);
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    if (productId) {
+      getProduct();
+    }
+
+    // eslint-disable-next-line
+  }, []);
+
+  if (loading) {
+    return (
+      <>
+        <div className="medium_divider"></div>
+        <Loader />
+      </>
+    );
+  }
 
   return (
     <div className="row">
