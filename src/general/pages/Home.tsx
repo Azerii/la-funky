@@ -1,11 +1,10 @@
-import FeaturedSales from '../components/home/banners/FeaturedSales';
 import Footer from '../components/global/Footer';
 import BannerSlider from '../components/home/header/BannerSlider';
 import Header from '../components/home/header/Header';
-import FeaturedProducts from '../components/home/products/FeaturedProducts';
 import Brands from '../components/home/brands/Brands';
 import NewArrivals from '../components/home/products/NewArrivals';
 import DiscountedProducts from '../components/home/products/DiscountedProducts';
+import BestSelling from '../components/home/products/BestSelling';
 
 function Home(): JSX.Element {
   return (
@@ -14,9 +13,9 @@ function Home(): JSX.Element {
       <BannerSlider />
       <div className="main_content">
         <NewArrivals />
-        <FeaturedSales />
+        <BestSelling />
         <DiscountedProducts />
-        <Brands />
+        {/* <Brands /> */}
       </div>
       <Footer />
     </div>

@@ -66,7 +66,7 @@ function Header() {
   }, []);
 
   return (
-    <Wrapper className="header_wrap">
+    <Wrapper className="header_wrap sticky-top">
       <div className="middle-header dark_skin">
         <div className="container">
           <div className="nav_block">

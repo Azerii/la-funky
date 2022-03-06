@@ -25,7 +25,7 @@ function Navbar() {
   const token = useAppSelector((state) => state.auth.token);
 
   return (
-    <Wrapper className="header_wrap fixed-top header_with_topbar">
+    <Wrapper className="header_wrap header_with_topbar sticky-top">
       <div className="top-header">
         <div className="container">
           <div className="row align-items-center">
