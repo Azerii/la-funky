@@ -1,10 +1,7 @@
-import Footer from '../components/global/Footer';
-import BannerSlider from '../components/home/header/BannerSlider';
-import Header from '../components/home/header/Header';
-import NewArrivals from '../components/home/products/NewArrivals';
-import DiscountedProducts from '../components/home/products/DiscountedProducts';
-import BestSelling from '../components/home/products/BestSelling';
 import { useEffect } from 'react';
+import Footer from '../components/global/Footer';
+import Navbar from '../components/global/Navbar';
+import ProductDetails from '../components/productDetails/ProductDetails';
 
 const scriptUrls = [
   'assets/js/jquery-3.6.0.min.js',
@@ -30,24 +27,19 @@ const appendScript = (url: string): void => {
   document.body.appendChild(scriptTag);
 };
 
-function Home(): JSX.Element {
+function ViewProduct(): JSX.Element {
   useEffect(() => {
     scriptUrls.forEach((url) => appendScript(url));
     // eslint-disable-next-line
   }, []);
 
   return (
-    <div>
-      <Header />
-      <BannerSlider />
-      <div className="main_content">
-        <NewArrivals />
-        <BestSelling />
-        <DiscountedProducts />
-      </div>
+    <>
+      <Navbar />
+      <ProductDetails />
       <Footer />
-    </div>
+    </>
   );
 }
 
-export default Home;
+export default ViewProduct;

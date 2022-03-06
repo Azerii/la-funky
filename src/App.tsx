@@ -23,7 +23,7 @@ import {
 import Home from './general/pages/Home';
 import PageNotFound from './general/components/global/PageNotFound';
 import Shop from './general/pages/Shop';
-import Product from './general/pages/Product';
+import Product from './general/pages/ViewProduct';
 import Cart from './general/pages/Cart';
 import Checkout from './general/pages/Checkout';
 import MyAccount from './customer/pages/MyAccount';
@@ -50,8 +50,8 @@ const scriptUrls = [
   'assets/js/isotope.min.js',
   'assets/js/jquery.dd.min.js',
   'assets/js/slick.min.js',
-  'assets/js/jquery.elevatezoom.js'
-  // 'assets/js/scripts.js'
+  'assets/js/jquery.elevatezoom.js',
+  'assets/js/scripts.js'
 ];
 
 const appendScript = (url: string): void => {
@@ -66,7 +66,8 @@ function App(): JSX.Element {
 
   useEffect(() => {
     scriptUrls.forEach((url) => appendScript(url));
-  });
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     document.querySelector('html')?.scrollTo(0, 0);
