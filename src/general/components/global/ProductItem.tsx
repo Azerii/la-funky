@@ -25,7 +25,7 @@ function ProductItem(props: Props): JSX.Element {
   const handleAddToCart = (): void => {
     const cartItem = {
       id: product?.id,
-      image: product?.media[0],
+      image: product?.media[0].url,
       name: product?.name,
       quantityAvailable: Number(product?.quantityAvailable),
       price: Number(product?.regularPrice),
@@ -41,7 +41,10 @@ function ProductItem(props: Props): JSX.Element {
       <div className="product">
         <div className="product_img">
           <a href="/product-details">
-            <img src={product?.media[0] ?? product_img1} alt="product_img1" />
+            <img
+              src={product?.media[0]?.url ?? product_img1}
+              alt="product_img1"
+            />
           </a>
           <div className="product_action_box">
             <ul className="list_none pr_action_btn">

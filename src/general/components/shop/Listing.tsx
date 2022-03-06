@@ -46,9 +46,10 @@ function Listing(): JSX.Element {
             {loading ? (
               <Loader />
             ) : (
-              <div className="row shop_container">
+              <div className="row">
                 {products?.map((item: Product, index: number) => (
                   <ProductItem
+                    key={index}
                     shopClassNames="col-lg-3 col-md-4 col-6"
                     product={item}
                   />

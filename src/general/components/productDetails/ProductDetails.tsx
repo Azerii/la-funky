@@ -28,7 +28,7 @@ function ProductDetails(): JSX.Element {
   const handleAddToCart = (): void => {
     const cartItem: CartItem = {
       id: product?.id,
-      image: product?.media[0],
+      image: product?.media[0].url,
       name: product?.name,
       quantityAvailable: Number(product?.quantityAvailable),
       price: Number(product?.regularPrice),
@@ -102,8 +102,8 @@ function ProductDetails(): JSX.Element {
           <div className="product_img_box">
             <img
               id="product_img"
-              src={product.media[0] ?? product_img1}
-              data-zoom-image={product.media[0] ?? product_img1}
+              src={product.media[0]?.url ?? product_img1}
+              data-zoom-image={product.media[0].url ?? product_img1}
               alt="product_img1"
             />
             <a href="#" className="product_img_zoom" title="Zoom">
@@ -117,16 +117,16 @@ function ProductDetails(): JSX.Element {
             data-slides-to-scroll="1"
             data-infinite="false"
           >
-            {product.media?.map((image: string, index: number) => (
+            {product.media?.map((item: any, index: number) => (
               <div key={index} className="item">
                 <div
                   className={`img_wrapper product_gallery_item${
                     index === 0 ? ' active' : ''
                   }`}
-                  data-image={image}
-                  data-zoom-image={image}
+                  data-image={item.url}
+                  data-zoom-image={item.url}
                 >
-                  <img src={image} alt="product_small_img1" />
+                  <img src={item.url} alt="product_small_img1" />
                 </div>
               </div>
             ))}

@@ -22,7 +22,7 @@ function CartEntry(props: Props): JSX.Element {
     <tr>
       <td className="product-thumbnail">
         <a href="#">
-          <img src={product_img1} alt="product1" />
+          <img src={data.image ?? product_img1} alt="product1" />
         </a>
       </td>
       <td className="product-name" data-title="Product">

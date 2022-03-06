@@ -125,6 +125,7 @@ function Header() {
                   data-bs-target="#navCatContent"
                   aria-expanded="false"
                   className="categories_btn"
+                  onClick={() => navigate('shop')}
                 >
                   <i className="linearicons-bag"></i>
                   <span>Shop Categories</span>

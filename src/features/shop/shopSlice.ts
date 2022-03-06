@@ -16,12 +16,19 @@ export interface Tag {
   [x: string]: any;
 }
 
+export interface Alert {
+  msg: string;
+  type: string;
+  status: Boolean;
+}
+
 interface ShopState {
   currentProduct: Product;
   categories: Category[];
   brands: Brand[];
   tags: Tag[];
   loading: Boolean;
+  alert: Alert;
 }
 
 // Define the initial state using that type
@@ -30,7 +37,12 @@ const initialState: ShopState = {
   categories: [],
   brands: [],
   tags: [],
-  loading: false
+  loading: false,
+  alert: {
+    msg: '',
+    type: '',
+    status: false
+  }
 };
 
 export const shopSlice = createSlice({
@@ -58,6 +70,9 @@ export const shopSlice = createSlice({
     },
     setLoading: (state: ShopState, action: PayloadAction<Boolean>): void => {
       state.loading = action.payload;
+    },
+    setAlert: (state: ShopState, action: PayloadAction<Alert>): void => {
+      state.alert = action.payload;
     }
   }
 });
