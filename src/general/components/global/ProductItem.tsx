@@ -2,8 +2,6 @@ import product_img1 from '../../../assets/images/product_img1.jpg';
 import styled from 'styled-components';
 import { useAppDispatch } from '../../../redux/hooks';
 import { addItem } from '../../../features/cart/cartSlice';
-import { Link } from 'react-router-dom';
-import { setCurrentProduct } from '../../../features/shop/shopSlice';
 import { formatNumber } from '../../../utils/utils';
 
 const Wrapper = styled.div`
@@ -12,7 +10,7 @@ const Wrapper = styled.div`
 
     img {
       max-width: unset;
-      min-width: 100%;
+      width: 100%;
       height: 100%;
     }
   }

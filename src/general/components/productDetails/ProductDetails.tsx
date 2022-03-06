@@ -24,6 +24,30 @@ const ImgGallery = styled.div`
   display: flex;
 `;
 
+const scriptUrls = [
+  'assets/js/jquery-3.6.0.min.js',
+  'assets/js/popper.min.js',
+  'assets/bootstrap/js/bootstrap.min.js',
+  'assets/owlcarousel/js/owl.carousel.min.js',
+  'assets/js/magnific-popup.min.js',
+  'assets/js/waypoints.min.js',
+  'assets/js/parallax.js',
+  'assets/js/jquery.countdown.min.js',
+  'assets/js/imagesloaded.pkgd.min.js',
+  'assets/js/isotope.min.js',
+  'assets/js/jquery.dd.min.js',
+  'assets/js/slick.min.js',
+  'assets/js/jquery.elevatezoom.js',
+  'assets/js/scripts.js'
+];
+
+const appendScript = (url: string): void => {
+  const scriptTag = document.createElement('script');
+  scriptTag.src = url;
+  scriptTag.type = 'text/javascript';
+  document.body.appendChild(scriptTag);
+};
+
 function ProductDetails(): JSX.Element {
   const { search } = useLocation();
   const productId = new URLSearchParams(search).get('id');
@@ -87,6 +111,13 @@ function ProductDetails(): JSX.Element {
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    if (!loading) {
+      scriptUrls.forEach((url) => appendScript(url));
+    }
+    // eslint-disable-next-line
+  }, [loading]);
 
   useEffect(() => {
     if (productId) {
@@ -156,7 +187,7 @@ function ProductDetails(): JSX.Element {
                   <span className="price">
                     <del>N</del>
                     {formatNumber(product?.regularPrice)}
-                  </span>
+                  </span>{' '}
                   {product?.discount && (
                     <del>
                       N
@@ -167,7 +198,7 @@ function ProductDetails(): JSX.Element {
                         )
                       )}
                     </del>
-                  )}
+                  )}{' '}
                   {product?.discount?.rate && (
                     <div className="on_sale">
                       <span>{product?.discount?.rate}% Off</span>
@@ -198,45 +229,44 @@ function ProductDetails(): JSX.Element {
                     </li>
                   </ul>
                 </div>
-                {!!product?.variants?.color?.length && (
-                  <div className="pr_switch_wrap">
-                    <span className="switch_lable">Color</span>
-                    <div className="product_color_switch">
-                      {/* <span className="active" data-color="#87554B"></span>
-                <span data-color="#333333"></span>
-                <span data-color="#DA323F"></span> */}
-                      {product?.variants?.color?.map(
-                        (color: string, index: number) => (
-                          <span
-                            key={index}
-                            className={`color${index === 0 ? ' active' : ''}`}
-                            data-color={color}
-                            onClick={() => setColor(color)}
-                          ></span>
-                        )
-                      )}
+                {product?.variants?.color &&
+                  Boolean(product?.variants?.color.length) && (
+                    <div className="pr_switch_wrap">
+                      <span className="switch_lable">Color</span>
+                      <div className="product_color_switch">
+                        {product?.variants?.color?.map(
+                          (color: string, index: number) => (
+                            <span
+                              key={index}
+                              className={`color${index === 0 ? ' active' : ''}`}
+                              data-color={color}
+                              onClick={() => setColor(color)}
+                            ></span>
+                          )
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
-                {!!product?.variants?.size.length && (
-                  <div className="pr_switch_wrap">
-                    <span className="switch_lable">Size</span>
-                    <div className="product_size_switch">
-                      {product?.variants?.size?.map(
-                        (size: string, index: number) => (
-                          <span
-                            key={index}
-                            className={`size`}
-                            data-size={size}
-                            onClick={() => setSize(size)}
-                          >
-                            {size}
-                          </span>
-                        )
-                      )}
+                  )}
+                {product?.variants?.size &&
+                  Boolean(product?.variants?.size.length) && (
+                    <div className="pr_switch_wrap">
+                      <span className="switch_lable">Size</span>
+                      <div className="product_size_switch">
+                        {product?.variants?.size?.map(
+                          (size: string, index: number) => (
+                            <span
+                              key={index}
+                              className={`size`}
+                              data-size={size}
+                              onClick={() => setSize(size)}
+                            >
+                              {size}
+                            </span>
+                          )
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
               </div>
               <hr />
               <div className="cart_extra">

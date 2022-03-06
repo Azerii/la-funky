@@ -5,6 +5,7 @@ const Wrapper = styled.div`
 
   .title {
     color: #ffffff;
+    text-transform: uppercase;
   }
 
   .subtitle {

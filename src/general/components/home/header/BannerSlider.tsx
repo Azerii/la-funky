@@ -16,8 +16,8 @@ function BannerSlider() {
               <div className="carousel-inner">
                 <CarouselItem
                   background={banner1}
-                  title="Home of fine things"
-                  subtitle="Choice bags and shoes"
+                  title="Choice bags and shoes"
+                  subtitle="Home of fine things"
                   target="/shop"
                   active
                 />

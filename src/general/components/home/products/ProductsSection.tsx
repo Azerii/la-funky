@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import Loader from '../../global/Loader';
 import ProductItem from '../../global/ProductItem';
 
+const Wrapper = styled.div`
+  padding-top: 50px;
+  padding-bottom: 0;
+`;
+
 const ProductsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -26,7 +31,7 @@ function ProductsSection(props: Props): JSX.Element {
   const { title, products, loading } = props;
 
   return (
-    <div className="section small_pb">
+    <Wrapper className="section">
       <div className="container">
         <div className="row">
           <div className="col-md-12">
@@ -47,7 +52,7 @@ function ProductsSection(props: Props): JSX.Element {
           </ProductsWrapper>
         )}
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
