@@ -15,6 +15,12 @@ const Wrapper = styled.div`
     }
   }
 
+  &.shop {
+    .product_img {
+      height: 200px;
+    }
+  }
+
   @media screen and (max-width: 768px) {
     .product_img {
       height: auto;
@@ -22,6 +28,12 @@ const Wrapper = styled.div`
       img {
         width: 100%;
         min-width: unset;
+        height: auto;
+      }
+    }
+
+    &.shop {
+      .product_img {
         height: auto;
       }
     }

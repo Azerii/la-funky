@@ -2,7 +2,12 @@ import product_img1 from '../../../assets/images/product_img1.jpg';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import styled from 'styled-components';
 import { Product, setCurrentProduct } from '../../../features/shop/shopSlice';
-import { base_url, formatNumber } from '../../../utils/utils';
+import {
+  // appendScript,
+  base_url,
+  formatNumber
+  // scriptUrls
+} from '../../../utils/utils';
 import { useState } from 'react';
 import { addItem, CartItem } from '../../../features/cart/cartSlice';
 import { useLocation } from 'react-router-dom';
@@ -18,35 +23,17 @@ const ProductImage = styled.div`
       width: 100%;
     }
   }
+
+  .img_wrapper {
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 const ImgGallery = styled.div`
   display: flex;
 `;
-
-const scriptUrls = [
-  'assets/js/jquery-3.6.0.min.js',
-  'assets/js/popper.min.js',
-  'assets/bootstrap/js/bootstrap.min.js',
-  'assets/owlcarousel/js/owl.carousel.min.js',
-  'assets/js/magnific-popup.min.js',
-  'assets/js/waypoints.min.js',
-  'assets/js/parallax.js',
-  'assets/js/jquery.countdown.min.js',
-  'assets/js/imagesloaded.pkgd.min.js',
-  'assets/js/isotope.min.js',
-  'assets/js/jquery.dd.min.js',
-  'assets/js/slick.min.js',
-  'assets/js/jquery.elevatezoom.js',
-  'assets/js/scripts.js'
-];
-
-const appendScript = (url: string): void => {
-  const scriptTag = document.createElement('script');
-  scriptTag.src = url;
-  scriptTag.type = 'text/javascript';
-  document.body.appendChild(scriptTag);
-};
 
 function ProductDetails(): JSX.Element {
   const { search } = useLocation();
@@ -55,7 +42,7 @@ function ProductDetails(): JSX.Element {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const product: Product = useAppSelector((state) => state.shop.currentProduct);
   const dispatch = useAppDispatch();
 
@@ -112,12 +99,12 @@ function ProductDetails(): JSX.Element {
     }
   };
 
-  useEffect(() => {
-    if (!loading) {
-      scriptUrls.forEach((url) => appendScript(url));
-    }
-    // eslint-disable-next-line
-  }, [loading]);
+  // useEffect(() => {
+  //   if (!loading) {
+  //     scriptUrls.forEach((url) => appendScript(url));
+  //   }
+  //   // eslint-disable-next-line
+  // }, [loading]);
 
   useEffect(() => {
     if (productId) {

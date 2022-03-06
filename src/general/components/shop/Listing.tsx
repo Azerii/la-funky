@@ -3,7 +3,7 @@ import Filters from './Filters';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { base_url } from '../../../utils/utils';
+import { appendScript, base_url, scriptUrls } from '../../../utils/utils';
 import { Product } from '../../../features/shop/shopSlice';
 import Loader from '../global/Loader';
 
@@ -34,6 +34,13 @@ function Listing(): JSX.Element {
   };
 
   useEffect(() => {
+    if (!loading) {
+      scriptUrls.forEach((url) => appendScript(url));
+    }
+    // eslint-disable-next-line
+  }, [loading]);
+
+  useEffect(() => {
     getProducts();
     // eslint-disable-next-line
   }, []);
@@ -50,7 +57,7 @@ function Listing(): JSX.Element {
                 {products?.map((item: Product, index: number) => (
                   <ProductItem
                     key={index}
-                    shopClassNames="col-lg-3 col-md-4 col-6"
+                    shopClassNames="col-lg-3 col-md-4 col-6 shop"
                     product={item}
                   />
                 ))}

@@ -1,10 +1,8 @@
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { useAppSelector } from '../../../redux/hooks';
 import CartEntry from './CartEntry';
 
 function CartTable(): JSX.Element {
-  const cartSubTotal = useAppSelector((state) => state.cart.subTotal);
   const cartItems = useAppSelector((state) => state.cart.items);
-  const dispatch = useAppDispatch();
 
   return (
     <div className="row">
