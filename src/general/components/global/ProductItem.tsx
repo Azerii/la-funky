@@ -6,7 +6,29 @@ import { Link } from 'react-router-dom';
 import { setCurrentProduct } from '../../../features/shop/shopSlice';
 import { formatNumber } from '../../../utils/utils';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  .product_img {
+    height: 240px;
+
+    img {
+      max-width: unset;
+      min-width: 100%;
+      height: 100%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .product_img {
+      height: auto;
+
+      img {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+      }
+    }
+  }
+`;
 
 interface Product {
   [x: string]: any;
@@ -40,10 +62,10 @@ function ProductItem(props: Props): JSX.Element {
     <Wrapper className={`item ${shopClassNames}`}>
       <div className="product">
         <div className="product_img">
-          <a href="/product-details">
+          <a href={`/product-details?id=${product?.id}`}>
             <img
               src={product?.media[0]?.url ?? product_img1}
-              alt="product_img1"
+              alt="product_img"
             />
           </a>
           <div className="product_action_box">
@@ -63,8 +85,8 @@ function ProductItem(props: Props): JSX.Element {
         <div className="product_info">
           <h6 className="product_title">
             <a
-              href="/product-details"
-              onClick={() => product && dispatch(setCurrentProduct(product))}
+              href={`/product-details?id=${product?.id}`}
+              // onClick={() => product && dispatch(setCurrentProduct(product))}
             >
               {product?.name}
             </a>

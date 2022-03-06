@@ -1,6 +1,5 @@
-import banner4 from '../../../../assets/images/banner4.jpg';
-import banner5 from '../../../../assets/images/banner5.jpg';
-import banner6 from '../../../../assets/images/banner6.jpg';
+import banner1 from '../../../../assets/images/banner_img_one.jpeg';
+import banner2 from '../../../../assets/images/banner_img_two.jpeg';
 import CarouselItem from './CarouselItem';
 
 function BannerSlider() {
@@ -16,22 +15,16 @@ function BannerSlider() {
             >
               <div className="carousel-inner">
                 <CarouselItem
-                  background={banner4}
-                  title="Get up to 50% off Today Only!"
-                  subtitle="Woman Fashion"
+                  background={banner1}
+                  title="Home of fine things"
+                  subtitle="Choice bags and shoes"
                   target="/shop"
                   active
                 />
                 <CarouselItem
-                  background={banner5}
-                  title="50% off in all products!"
-                  subtitle="Man Fashion"
-                  target="/shop"
-                />
-                <CarouselItem
-                  background={banner6}
-                  title="Taking your Viewing Experience to Next Level"
-                  subtitle="Summer Sale"
+                  background={banner2}
+                  title="Choice bags and shoes"
+                  subtitle="Home of fine things"
                   target="/shop"
                 />
               </div>
@@ -44,10 +37,6 @@ function BannerSlider() {
                 <li
                   data-bs-target="#carouselExampleControls"
                   data-bs-slide-to="1"
-                ></li>
-                <li
-                  data-bs-target="#carouselExampleControls"
-                  data-bs-slide-to="2"
                 ></li>
               </ol>
             </div>
