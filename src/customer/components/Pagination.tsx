@@ -4,6 +4,7 @@ const Pagination = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
+  border: 1px solid var(--bs-gray-200);
 
   .divider {
     height: 100%;
@@ -43,6 +44,7 @@ const Pagination = styled.div`
 
     .icon {
       height: 20px;
+      margin-bottom: 0;
     }
   }
 `;

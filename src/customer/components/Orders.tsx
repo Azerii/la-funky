@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
-import { base_url, numSequence } from '../../utils/utils';
+import {
+  appendScript,
+  base_url,
+  numSequence,
+  scriptUrls
+} from '../../utils/utils';
 import DataTable from './DataTable';
 import { useTable, usePagination } from 'react-table';
 import FeatherIcon from '../../general/components/global/FeatherIcon';
@@ -45,7 +50,7 @@ function Orders(): JSX.Element {
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState<any>([]);
   const [count, setCount] = useState(0);
-  const [controlledPageCount, setPageCount] = useState(0);
+  const [controlledPageCount, setPageCount] = useState(1);
 
   const {
     getTableProps,
@@ -209,10 +214,11 @@ function Orders(): JSX.Element {
                           </option>
                         ))}
                       </select>
-                      <i
-                        data-feather="chevron-down"
-                        className="dropdownIcon"
-                      ></i>
+                      {/* <FeatherIcon
+                        iconName="chevron-down"
+                        className="dropdownIcon icon"
+                        color="var(--bs-gray-200)"
+                      /> */}
                     </div>
                     <div className="colItem">
                       <span className="sup">

@@ -3,9 +3,11 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import styled from 'styled-components';
 import { Product, setCurrentProduct } from '../../../features/shop/shopSlice';
 import {
+  appendScript,
   // appendScript,
   base_url,
-  formatNumber
+  formatNumber,
+  scriptUrls
   // scriptUrls
 } from '../../../utils/utils';
 import { useState } from 'react';
@@ -104,12 +106,12 @@ function ProductDetails(): JSX.Element {
     }
   };
 
-  // useEffect(() => {
-  //   if (!loading) {
-  //     scriptUrls.forEach((url) => appendScript(url));
-  //   }
-  //   // eslint-disable-next-line
-  // }, [loading]);
+  useEffect(() => {
+    if (!loading) {
+      scriptUrls.forEach((url) => appendScript(url));
+    }
+    // eslint-disable-next-line
+  }, [product]);
 
   useEffect(() => {
     if (productId) {

@@ -21,6 +21,8 @@ function SubTotals(): JSX.Element {
   const checkCode = async (e: any): Promise<void> => {
     e.preventDefault();
 
+    if (!promoCode) return;
+
     setCheckingCode(true);
     try {
       const res = await axios.get(`${base_url}/shop/vouchers/${promoCode}`);
@@ -70,7 +72,7 @@ function SubTotals(): JSX.Element {
                             <button
                               className="btn btn-fill-out btn-sm"
                               type="submit"
-                              disabled={checkingCode}
+                              disabled={checkingCode || !promoCode}
                             >
                               {checkingCode ? 'Checking...' : 'Apply Promo'}
                             </button>
