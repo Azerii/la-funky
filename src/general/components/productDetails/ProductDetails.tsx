@@ -33,6 +33,11 @@ const ProductImage = styled.div`
 
 const ImgGallery = styled.div`
   display: flex;
+  gap: 12px;
+
+  .item {
+    width: 129px;
+  }
 `;
 
 function ProductDetails(): JSX.Element {

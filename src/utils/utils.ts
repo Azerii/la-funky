@@ -30,3 +30,13 @@ export const appendScript = (url: string): void => {
   scriptTag.type = 'text/javascript';
   document.body.appendChild(scriptTag);
 };
+
+export const numSequence = (max: number) => {
+  let arr = [];
+
+  for (let i = 0; i < max; i++) {
+    arr[i] = i + 1;
+  }
+
+  return arr;
+};
