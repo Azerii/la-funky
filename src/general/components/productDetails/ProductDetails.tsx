@@ -119,7 +119,7 @@ function ProductDetails(): JSX.Element {
     }
 
     // eslint-disable-next-line
-  }, []);
+  }, [productId]);
 
   if (loading) {
     return (

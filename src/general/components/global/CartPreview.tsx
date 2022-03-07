@@ -25,10 +25,10 @@ function CartPreview(props: Props) {
             >
               <i className="ion-close"></i>
             </span>
-            <Link to={`/product-details?id=${item.id}`}>
+            <a href={`/product-details?id=${item.id}`}>
               <img src={item.image || cart_thamb1} alt="cart_thumb1" />
               {item.name}
-            </Link>
+            </a>
             <span className="cart_quantity">
               {' '}
               {item.quantity} x{' '}

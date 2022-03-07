@@ -22,12 +22,19 @@ export interface Alert {
   status: Boolean;
 }
 
+export interface Location {
+  id: string;
+  name: string;
+  price: Boolean;
+}
+
 interface ShopState {
   currentProduct: Product;
   categories: Category[];
   brands: Brand[];
   tags: Tag[];
   loading: Boolean;
+  locations: Location[];
   alert: Alert;
 }
 
@@ -38,6 +45,7 @@ const initialState: ShopState = {
   brands: [],
   tags: [],
   loading: false,
+  locations: [],
   alert: {
     msg: '',
     type: '',
@@ -68,6 +76,12 @@ export const shopSlice = createSlice({
     setTags: (state: ShopState, action: PayloadAction<Tag[]>): void => {
       state.tags = action.payload;
     },
+    setLocations: (
+      state: ShopState,
+      action: PayloadAction<Location[]>
+    ): void => {
+      state.locations = action.payload;
+    },
     setLoading: (state: ShopState, action: PayloadAction<Boolean>): void => {
       state.loading = action.payload;
     },
@@ -77,7 +91,12 @@ export const shopSlice = createSlice({
   }
 });
 
-export const { setCurrentProduct, setCategories, setBrands, setTags } =
-  shopSlice.actions;
+export const {
+  setCurrentProduct,
+  setCategories,
+  setBrands,
+  setTags,
+  setLocations
+} = shopSlice.actions;
 
 export default shopSlice.reducer;
