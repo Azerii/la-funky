@@ -29,7 +29,11 @@ function DiscountedProducts() {
   }, []);
 
   return (
-    <ProductsSection title="Discounted" products={products} loading={loading} />
+    <ProductsSection
+      title="Special Offers"
+      products={products}
+      loading={loading}
+    />
   );
 }
 

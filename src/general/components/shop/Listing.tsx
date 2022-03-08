@@ -16,6 +16,8 @@ const Wrapper = styled.div`
 function Listing(): JSX.Element {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState('all');
+  const [filter, setFilter] = useState('all');
 
   const getProducts = async (): Promise<void> => {
     try {
@@ -33,6 +35,31 @@ function Listing(): JSX.Element {
     }
   };
 
+  const getProductsByFilter = async (): Promise<void> => {
+    if (filter === 'all') {
+      await getProducts();
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const res = await axios.get(`${base_url}/shop/products/${filter}`);
+
+      if (res?.data?.status === 'success') {
+        setProducts(res.data.data.products);
+      }
+
+      setLoading(false);
+    } catch (e: any) {
+      setLoading(false);
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getProductsByFilter();
+  }, [filter]);
+
   useEffect(() => {
     if (!loading) {
       scriptUrls.forEach((url) => appendScript(url));
@@ -40,10 +67,10 @@ function Listing(): JSX.Element {
     // eslint-disable-next-line
   }, [loading]);
 
-  useEffect(() => {
-    getProducts();
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <Wrapper className="section">
@@ -54,17 +81,32 @@ function Listing(): JSX.Element {
               <Loader />
             ) : (
               <div className="row">
-                {products?.map((item: Product, index: number) => (
-                  <ProductItem
-                    key={index}
-                    shopClassNames="col-lg-3 col-md-4 col-6 shop"
-                    product={item}
-                  />
-                ))}
+                {products
+                  ?.filter((item: any) =>
+                    category === 'all'
+                      ? true
+                      : item.category.name.toLowerCase() ===
+                        category.toLowerCase()
+                  )
+                  .map((item: Product, index: number) => (
+                    <ProductItem
+                      key={index}
+                      shopClassNames="col-lg-3 col-md-4 col-6 shop"
+                      product={item}
+                    />
+                  ))}
+                {products?.filter((item: any) =>
+                  category === 'all'
+                    ? true
+                    : item.category.name.toLowerCase() ===
+                      category.toLowerCase()
+                )?.length ? null : (
+                  <p>No products found</p>
+                )}
               </div>
             )}
           </div>
-          <Filters />
+          <Filters setFilter={setFilter} setCategory={setCategory} />
         </div>
       </div>
     </Wrapper>

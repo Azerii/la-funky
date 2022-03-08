@@ -65,9 +65,13 @@ function SubTotals(): JSX.Element {
     }));
 
     try {
-      const res = await axios.put(`${base_url}/cart`, tempCart, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const res = await axios.put(
+        `${base_url}/cart`,
+        { items: tempCart },
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
 
       if (res.data.status === 'success') {
         dispatch(setOrderDetails(res.data.data));

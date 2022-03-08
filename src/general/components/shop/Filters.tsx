@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   }
 `;
 
-function Filters(): JSX.Element {
+function Filters(props: any): JSX.Element {
   const { search } = useLocation();
   const selectedCategory = new URLSearchParams(search).get('category');
   const selectedBrand = new URLSearchParams(search).get('brand');
@@ -22,7 +22,7 @@ function Filters(): JSX.Element {
   return (
     <Wrapper className="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
       <div className="sidebar">
-        <div className="custom_select">
+        {/* <div className="custom_select">
           <select className="form-control form-control-sm">
             <option value="order">Default sorting</option>
             <option value="popularity">Sort by popularity</option>
@@ -31,12 +31,12 @@ function Filters(): JSX.Element {
             <option value="price-desc">Sort by price: high to low</option>
           </select>
         </div>
-        <div className="small_divider"></div>
+        <div className="small_divider"></div> */}
         <div className="widget">
           <h5 className="widget_title">Categories</h5>
           <ul className="widget_categories">
             {/* Refactor search */}
-            {categories?.map((item, index) => (
+            {/* {categories?.map((item, index) => (
               <li key={index}>
                 <a
                   href={
@@ -53,79 +53,103 @@ function Filters(): JSX.Element {
                   <span className="categories_name">{item.name}</span>
                 </a>
               </li>
+            ))} */}
+            <li>
+              <div className="custome-radio">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="category"
+                  id="all_categories"
+                  value="all"
+                  defaultChecked={true}
+                  onClick={(e: any) => props.setCategory(e.target.value)}
+                />
+                <label className="form-check-label" htmlFor="all_categories">
+                  <span>All</span>
+                </label>
+              </div>
+            </li>
+            {categories?.map((item, index) => (
+              <li key={index}>
+                <div className="custome-radio">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="category"
+                    id={item.name}
+                    value={item.name}
+                    onClick={(e: any) => props.setCategory(e.target.value)}
+                  />
+                  <label className="form-check-label" htmlFor={item.name}>
+                    <span>{item.name}</span>
+                  </label>
+                </div>
+              </li>
             ))}
           </ul>
         </div>
         <div className="widget">
-          <h5 className="widget_title">Brands</h5>
+          <h5 className="widget_title">Filters</h5>
           <ul className="list_brand">
             <li>
-              <div className="custome-checkbox">
+              <div className="custome-radio">
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="checkbox"
-                  id="Arrivals"
-                  value=""
+                  name="filter"
+                  id="all_filters"
+                  value="all"
+                  defaultChecked={true}
+                  onClick={(e: any) => props.setFilter(e.target.value)}
                 />
-                <label className="form-check-label" htmlFor="Arrivals">
+                <label className="form-check-label" htmlFor="all_filters">
+                  <span>All</span>
+                </label>
+              </div>
+            </li>
+            <li>
+              <div className="custome-radio">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="filter"
+                  id="arrivals"
+                  value="arrivals"
+                  onClick={(e: any) => props.setFilter(e.target.value)}
+                />
+                <label className="form-check-label" htmlFor="arrivals">
                   <span>New Arrivals</span>
                 </label>
               </div>
             </li>
             <li>
-              <div className="custome-checkbox">
+              <div className="custome-radio">
                 <input
                   className="form-check-input"
-                  type="checkbox"
-                  name="checkbox"
-                  id="Lighting"
-                  value=""
+                  type="radio"
+                  name="filter"
+                  id="best-selling"
+                  value="best-selling"
+                  onClick={(e: any) => props.setFilter(e.target.value)}
                 />
-                <label className="form-check-label" htmlFor="Lighting">
-                  <span>Lighting</span>
+                <label className="form-check-label" htmlFor="best-selling">
+                  <span>Best Selling</span>
                 </label>
               </div>
             </li>
             <li>
-              <div className="custome-checkbox">
+              <div className="custome-radio">
                 <input
                   className="form-check-input"
-                  type="checkbox"
-                  name="checkbox"
-                  id="Tables"
-                  value=""
+                  type="radio"
+                  name="filter"
+                  id="discounted"
+                  value="discounted"
+                  onClick={(e: any) => props.setFilter(e.target.value)}
                 />
-                <label className="form-check-label" htmlFor="Tables">
-                  <span>Tables</span>
-                </label>
-              </div>
-            </li>
-            <li>
-              <div className="custome-checkbox">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="checkbox"
-                  id="Chairs"
-                  value=""
-                />
-                <label className="form-check-label" htmlFor="Chairs">
-                  <span>Chairs</span>
-                </label>
-              </div>
-            </li>
-            <li>
-              <div className="custome-checkbox">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="checkbox"
-                  id="Accessories"
-                  value=""
-                />
-                <label className="form-check-label" htmlFor="Accessories">
-                  <span>Accessories</span>
+                <label className="form-check-label" htmlFor="discounted">
+                  <span>Special Offers</span>
                 </label>
               </div>
             </li>
