@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAppSelector } from '../../../redux/hooks';
+import { setOrderDetails } from '../../../features/shop/shopSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { base_url, formatNumber } from '../../../utils/utils';
 
 const Wrapper = styled.div`
@@ -11,12 +13,17 @@ const Wrapper = styled.div`
 `;
 
 function SubTotals(): JSX.Element {
+  const navigate = useNavigate();
   const [promoAmount, setPromoAmount] = useState(0);
   const [promoCode, setPromoCode] = useState('');
   const [checkingCode, setCheckingCode] = useState(false);
   const [checkResponse, setCheckResponse] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const cartSubTotal = useAppSelector((state) => state.cart.subTotal);
+  const cart = useAppSelector((state) => state.cart.items);
+  const token = useAppSelector((state) => state.auth.token);
+  const dispatch = useAppDispatch();
 
   const checkCode = async (e: any): Promise<void> => {
     e.preventDefault();
@@ -39,6 +46,37 @@ function SubTotals(): JSX.Element {
     } catch (e: any) {
       setCheckResponse(e.response.data.message);
       setCheckingCode(false);
+      console.log(e);
+    }
+  };
+
+  const updateCart = async (): Promise<void> => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    setLoading(true);
+
+    const tempCart = cart.map((item) => ({
+      productId: item.id,
+      quantity: item.quantity,
+      variants: {}
+    }));
+
+    try {
+      const res = await axios.put(`${base_url}/cart`, tempCart, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (res.data.status === 'success') {
+        dispatch(setOrderDetails(res.data.data));
+        navigate('/checkout');
+      }
+
+      setLoading(false);
+    } catch (e: any) {
+      setLoading(false);
       console.log(e);
     }
   };
@@ -117,9 +155,13 @@ function SubTotals(): JSX.Element {
               </tbody>
             </table>
           </div>
-          <a href="/checkout" className="btn btn-fill-out">
-            Proceed To CheckOut
-          </a>
+          <button
+            className="btn btn-fill-out"
+            onClick={updateCart}
+            disabled={!cart || !cart.length || loading}
+          >
+            {loading ? 'Please wait...' : 'Proceed To CheckOut'}
+          </button>
         </div>
       </div>
     </Wrapper>

@@ -28,6 +28,20 @@ export interface Location {
   price: Boolean;
 }
 
+export interface DeliveryAddress {
+  id?: number;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phoneNumber?: string;
+  address?: string;
+  deliveryLocationId?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  zipCode?: string;
+}
+
 interface ShopState {
   currentProduct: Product;
   categories: Category[];
@@ -35,6 +49,8 @@ interface ShopState {
   tags: Tag[];
   loading: Boolean;
   locations: Location[];
+  deliveryAddress: DeliveryAddress;
+  orderDetails: any;
   alert: Alert;
 }
 
@@ -46,6 +62,8 @@ const initialState: ShopState = {
   tags: [],
   loading: false,
   locations: [],
+  deliveryAddress: {},
+  orderDetails: {},
   alert: {
     msg: '',
     type: '',
@@ -85,6 +103,15 @@ export const shopSlice = createSlice({
     setLoading: (state: ShopState, action: PayloadAction<Boolean>): void => {
       state.loading = action.payload;
     },
+    setDeliveryAddress: (
+      state: ShopState,
+      action: PayloadAction<DeliveryAddress>
+    ): void => {
+      state.deliveryAddress = action.payload;
+    },
+    setOrderDetails: (state: ShopState, action: PayloadAction<any>): void => {
+      state.orderDetails = action.payload;
+    },
     setAlert: (state: ShopState, action: PayloadAction<Alert>): void => {
       state.alert = action.payload;
     }
@@ -96,7 +123,9 @@ export const {
   setCategories,
   setBrands,
   setTags,
-  setLocations
+  setLocations,
+  setDeliveryAddress,
+  setOrderDetails
 } = shopSlice.actions;
 
 export default shopSlice.reducer;

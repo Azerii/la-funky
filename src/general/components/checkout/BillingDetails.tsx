@@ -3,16 +3,20 @@ import FormGroup from '../global/FormGroup';
 import SelectLocation from './SelectLocation';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import { useAppSelector } from '../../../redux/hooks';
 
 const Wrapper = styled.div`
   form {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1.5rem;
+    pointer-events: none;
   }
 `;
 
 function BillingDetails(): JSX.Element {
+  const address = useAppSelector((state) => state.shop.deliveryAddress);
+
   const schema = Yup.object({
     firstName: Yup.string().required('Field required'),
     lastName: Yup.string().required('Field required'),
@@ -20,6 +24,8 @@ function BillingDetails(): JSX.Element {
       .email('Invalid email address')
       .required('Field required'),
     phoneNumber: Yup.string().required('Field required'),
+    address: Yup.string().required('Field required'),
+    deliveryLocationId: Yup.string().required('Field required'),
     city: Yup.string().required('Field required'),
     state: Yup.string().required('Field required'),
     country: Yup.string().required('Field required'),
@@ -33,14 +39,16 @@ function BillingDetails(): JSX.Element {
       </div>
       <Formik
         initialValues={{
-          firstName: '',
-          lastName: '',
-          email: '',
-          phoneNumber: '',
-          city: '',
-          state: '',
-          country: '',
-          zipCode: ''
+          firstName: address?.firstName || '',
+          lastName: address?.lastName || '',
+          email: address?.email || '',
+          phoneNumber: address?.phoneNumber || '',
+          address: address?.address || '',
+          deliveryLocationId: address?.deliveryLocationId || '',
+          city: address?.city || '',
+          state: address?.state || '',
+          country: address?.country || '',
+          zipCode: address?.zipCode || ''
         }}
         validationSchema={schema}
         onSubmit={async (values) => {
@@ -55,6 +63,7 @@ function BillingDetails(): JSX.Element {
               type="text"
               name="firstName"
               placeholder="First Name"
+              readOnly
             />
             <FormGroup
               fieldStyle="shortText"
@@ -62,38 +71,52 @@ function BillingDetails(): JSX.Element {
               type="text"
               name="lastName"
               placeholder="Last Name"
+              readOnly
             />
-            <FormGroup
+            {/* <FormGroup
               fieldStyle="shortText"
               className="form-group"
               type="text"
               name="email"
               placeholder="Email Address"
-            />
+              readOnly
+            /> */}
             <FormGroup
               fieldStyle="shortText"
               className="form-group"
               type="number"
               name="phoneNumber"
               placeholder="Phone Number"
+              readOnly
             />
+            <FormGroup
+              fieldStyle="shortText"
+              className="form-group"
+              name="address"
+              placeholder="Address"
+              readOnly
+            />
+            <SelectLocation name="deliveryLocationId" readOnly />
             <FormGroup
               fieldStyle="shortText"
               className="form-group"
               name="city"
               placeholder="City"
+              readOnly
             />
             <FormGroup
               fieldStyle="shortText"
               className="form-group"
               name="state"
               placeholder="State"
+              readOnly
             />
             <FormGroup
               fieldStyle="shortText"
               className="form-group"
               name="country"
               placeholder="Country"
+              readOnly
             />
             <FormGroup
               fieldStyle="shortText"
@@ -101,6 +124,7 @@ function BillingDetails(): JSX.Element {
               type="number"
               name="zipCode"
               placeholder="Zip Code"
+              readOnly
             />
           </form>
         )}

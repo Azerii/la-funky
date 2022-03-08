@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 function SelectLocation(props: any): JSX.Element {
   const [data, setData] = useState<any>([]);
   const token = useAppSelector((state) => state.auth.token);
-  const field = useField(props.name);
+  const [field] = useField(props.name);
   const dispatch = useAppDispatch();
 
   const getLocations = async (): Promise<void> => {
